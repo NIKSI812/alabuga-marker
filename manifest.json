@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "Alabuga War Bloggers Marker",
+  "version": "0.1.0",
+  "description": "Помечает 💩 каналы, которые рекламировали Алабугу после осени 2023.",
+  "permissions": ["storage", "alarms"],
+  "host_permissions": [
+    "https://docs.google.com/*",
+    "https://*.youtube.com/*",
+    "https://web.telegram.org/*",
+    "https://vk.com/*"
+  ],
+"icons": {
+  "128": "icons/icon.png"
+},
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.youtube.com/*",
+        "https://web.telegram.org/*",
+        "https://vk.com/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "Alabuga Marker",
+    "default_icon": "icons/icon.png"
+  }
+}
